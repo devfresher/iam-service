@@ -1,4 +1,3 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { Repository } from 'typeorm';
 import { BaseService } from './base.service';
 import { NotFoundException } from '@nestjs/common';
