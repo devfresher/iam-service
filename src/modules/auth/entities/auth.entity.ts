@@ -15,7 +15,7 @@ export class Auth {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', select: false })
   password!: string;
 
   @Column({ type: 'varchar', unique: true })
@@ -27,7 +27,7 @@ export class Auth {
   @OneToMany(() => Health, (health) => health.auth)
   healthRecords?: Health[];
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ type: 'text', nullable: true, select: false })
   refreshToken?: string | null;
 
   @Column({ type: 'enum', enum: Role, array: true, default: [Role.Patient] })

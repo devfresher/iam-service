@@ -125,7 +125,7 @@ export class BaseService<T extends ObjectLiteral> {
     const entity = await query.getOne();
 
     if (!entity) {
-      throw new NotFoundException(`${this.entityName} not found`);
+      throw new NotFoundException(`${this.entityName} record not found`);
     }
 
     return entity;
@@ -150,7 +150,7 @@ export class BaseService<T extends ObjectLiteral> {
     const entity = await query.getOne();
 
     if (!entity) {
-      throw new NotFoundException(`${this.entityName} not found`);
+      throw new NotFoundException(`${this.entityName} record not found`);
     }
 
     await this.repository.softDelete(entity.id);

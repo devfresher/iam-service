@@ -37,7 +37,7 @@ export class AuthService extends BaseService<Auth> {
       typeof jwtRefreshConfig
     >,
   ) {
-    super(authRepository, 'User');
+    super(authRepository, 'IAM');
   }
 
   async signup(dto: SignupDto) {
@@ -73,6 +73,7 @@ export class AuthService extends BaseService<Auth> {
   async validateUser(emailOrUsername: string, password: string) {
     const user = await this.authRepository.findOne({
       where: [{ email: emailOrUsername }, { username: emailOrUsername }],
+      select: ['id', 'email', 'username', 'password', 'roles', 'status'],
     });
 
     if (!user) {
@@ -165,6 +166,7 @@ export class AuthService extends BaseService<Auth> {
   ): Promise<Auth | boolean> {
     const auth = await this.authRepository.findOne({
       where: { id: userId },
+      select: ['id', 'refreshToken'],
     });
 
     if (auth?.refreshToken) {
@@ -186,6 +188,7 @@ export class AuthService extends BaseService<Auth> {
   async revokeRefreshToken(user: ActiveUser) {
     const auth = await this.authRepository.findOne({
       where: { id: user.id },
+      select: ['id', 'refreshToken'],
     });
 
     if (auth) {

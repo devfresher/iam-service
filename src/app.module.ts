@@ -26,8 +26,11 @@ import { HealthModule } from './modules/health/health.module';
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (dbConfiguration: ConfigType<typeof dbConfig>) => {
-        const isTestEnv = process.env.NODE_ENV === 'test';
+      useFactory: (
+        appConfiguration: ConfigType<typeof appConfig>,
+        dbConfiguration: ConfigType<typeof dbConfig>,
+      ) => {
+        const isTestEnv = appConfiguration.nodeEnv === 'test';
 
         if (isTestEnv) {
           return {
@@ -46,7 +49,7 @@ import { HealthModule } from './modules/health/health.module';
           ssl: { rejectUnauthorized: false },
         } as TypeOrmModuleOptions;
       },
-      inject: [dbConfig.KEY],
+      inject: [appConfig.KEY, dbConfig.KEY],
     }),
     CacheModule.registerAsync({
       isGlobal: true,
