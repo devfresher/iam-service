@@ -7,7 +7,7 @@ import {
   IsString,
   IsUUID,
 } from 'class-validator';
-import { Gender } from '../../../modules/health/enums/gender.enum';
+import { Gender } from '../../../common/enums/gender.enum';
 
 export class CreateHealthDto {
   @IsNotEmpty()

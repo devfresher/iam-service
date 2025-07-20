@@ -8,7 +8,7 @@ import {
   IsDate,
   IsDateString,
 } from 'class-validator';
-import { Gender } from '../../../modules/health/enums/gender.enum';
+import { Gender } from '../../../common/enums/gender.enum';
 
 export class UpdateHealthDto {
   @IsOptional()

@@ -11,7 +11,7 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { capitalizeWords } from '../../../common/utils/string.util';
-import { Gender } from '../enums/gender.enum';
+import { Gender } from '../../../common/enums/gender.enum';
 import { Auth } from '../../auth/entities/auth.entity';
 
 @Entity()
