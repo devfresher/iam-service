@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigType } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { CacheModule } from '@nestjs/cache-manager';
@@ -26,14 +26,26 @@ import { HealthModule } from './modules/health/health.module';
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (dbConfiguration: ConfigType<typeof dbConfig>) => ({
-        type: 'postgres',
-        url: dbConfiguration.dbUrl,
-        entities: [],
-        synchronize: false,
-        ssl: { rejectUnauthorized: false },
-        autoLoadEntities: true,
-      }),
+      useFactory: (dbConfiguration: ConfigType<typeof dbConfig>) => {
+        const isTestEnv = process.env.NODE_ENV === 'test';
+
+        if (isTestEnv) {
+          return {
+            type: 'sqlite',
+            database: ':memory:',
+            autoLoadEntities: true,
+            synchronize: true,
+          } as TypeOrmModuleOptions;
+        }
+
+        return {
+          type: 'postgres',
+          url: dbConfiguration.dbUrl,
+          autoLoadEntities: true,
+          synchronize: false,
+          ssl: { rejectUnauthorized: false },
+        } as TypeOrmModuleOptions;
+      },
       inject: [dbConfig.KEY],
     }),
     CacheModule.registerAsync({
