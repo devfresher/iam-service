@@ -10,13 +10,13 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignupDto } from './dto/sign-up.dto';
-import { ResponseMessage } from 'src/common/decorators/response-message.decorator';
+import { ResponseMessage } from '../../common/decorators/response-message.decorator';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { Response } from 'express';
-import { Public } from 'src/common/decorators/public.decorator';
-import { AuthenticatedUser } from 'src/common/decorators/authenticated-user.decorator';
+import { Public } from '../../common/decorators/public.decorator';
+import { AuthenticatedUser } from '../../common/decorators/authenticated-user.decorator';
 import { ActiveUser } from './types/active-user';
-import { AuthenticatedRequest } from 'src/common/interfaces/authenticated-request.interface';
+import { AuthenticatedRequest } from '../../common/interfaces/authenticated-request.interface';
 import { RefreshJwtAuthGuard } from './guards/refresh-jwt.guard';
 
 @Public()

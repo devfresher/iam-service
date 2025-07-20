@@ -2,10 +2,10 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Health } from './entities/health.entity';
 import { Repository } from 'typeorm';
-import { BaseService } from 'src/common/base/base.service';
+import { BaseService } from '../../common/base/base.service';
 import { UpdateHealthDto } from './dto/update-health.dto';
-import { CreateHealthDto } from 'src/modules/health/dto/create-health.dto';
-import { AuthService } from 'src/modules/auth/auth.service';
+import { CreateHealthDto } from '../../modules/health/dto/create-health.dto';
+import { AuthService } from '../../modules/auth/auth.service';
 
 @Injectable()
 export class HealthService extends BaseService<Health> {

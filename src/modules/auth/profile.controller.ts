@@ -7,8 +7,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ResponseMessage } from 'src/common/decorators/response-message.decorator';
-import { AuthenticatedUser } from 'src/common/decorators/authenticated-user.decorator';
+import { ResponseMessage } from '../../common/decorators/response-message.decorator';
+import { AuthenticatedUser } from '../../common/decorators/authenticated-user.decorator';
 import { Response } from 'express';
 import { ActiveUser } from './types/active-user';
 

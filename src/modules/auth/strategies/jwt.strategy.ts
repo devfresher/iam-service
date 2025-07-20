@@ -2,7 +2,7 @@ import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { ConfigType } from '@nestjs/config';
-import jwtConfig from 'src/common/config/jwt.config';
+import jwtConfig from '../../../common/config/jwt.config';
 import { JwtPayload } from '../types/jwt-payload';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';

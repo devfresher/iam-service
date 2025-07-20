@@ -6,7 +6,7 @@ import {
   Logger,
 } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { Role } from 'src/common/enums/role.enum';
+import { Role } from '../../common/enums/role.enum';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SignupDto } from './dto/sign-up.dto';
 import * as bcrypt from 'bcryptjs';
@@ -16,10 +16,10 @@ import { EventEmitter2 } from '@nestjs/event-emitter';
 import { JwtPayload } from './types/jwt-payload';
 import { Response } from 'express';
 import { ActiveUser } from './types/active-user';
-import jwtRefreshConfig from 'src/common/config/jwt-refresh.config';
+import jwtRefreshConfig from '../../common/config/jwt-refresh.config';
 import { ConfigType } from '@nestjs/config';
-import appConfig from 'src/common/config/app.config';
-import { BaseService } from 'src/common/base/base.service';
+import appConfig from '../../common/config/app.config';
+import { BaseService } from '../../common/base/base.service';
 
 @Injectable()
 export class AuthService extends BaseService<Auth> {
@@ -30,12 +30,12 @@ export class AuthService extends BaseService<Auth> {
     private readonly authRepository: Repository<Auth>,
     private readonly jwtService: JwtService,
     private readonly eventEmitter: EventEmitter2,
+    @Inject(appConfig.KEY)
+    private readonly appConfiguration: ConfigType<typeof appConfig>,
     @Inject(jwtRefreshConfig.KEY)
     private readonly jwtRefreshConfiguration: ConfigType<
       typeof jwtRefreshConfig
     >,
-    @Inject(appConfig.KEY)
-    private readonly appConfiguration: ConfigType<typeof appConfig>,
   ) {
     super(authRepository, 'User');
   }

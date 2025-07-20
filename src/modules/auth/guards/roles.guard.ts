@@ -5,10 +5,10 @@ import {
   ForbiddenException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { IS_PUBLIC_KEY } from 'src/common/decorators/public.decorator';
-import { ROLES_KEY } from 'src/common/decorators/roles.decorator';
+import { IS_PUBLIC_KEY } from '../../../common/decorators/public.decorator';
+import { ROLES_KEY } from '../../../common/decorators/roles.decorator';
 import { ActiveUser } from '../types/active-user';
-import { Role } from 'src/common/enums/role.enum';
+import { Role } from '../../../common/enums/role.enum';
 
 @Injectable()
 export class RolesGuard implements CanActivate {

@@ -6,7 +6,7 @@ import { Request } from 'express';
 import { JwtPayload } from '../types/jwt-payload';
 import { AuthService } from '../auth.service';
 import { ActiveUser } from '../types/active-user';
-import jwtRefreshConfig from 'src/common/config/jwt-refresh.config';
+import jwtRefreshConfig from '../../../common/config/jwt-refresh.config';
 
 @Injectable()
 export class RefreshJwtStrategy extends PassportStrategy(

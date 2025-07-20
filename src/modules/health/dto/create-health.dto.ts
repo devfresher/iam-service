@@ -1,6 +1,5 @@
 import {
   IsDateString,
-  IsEmail,
   IsEnum,
   IsNotEmpty,
   IsOptional,
@@ -8,7 +7,7 @@ import {
   IsString,
   IsUUID,
 } from 'class-validator';
-import { Gender } from 'src/modules/health/enums/gender.enum';
+import { Gender } from '../../../modules/health/enums/gender.enum';
 
 export class CreateHealthDto {
   @IsNotEmpty()

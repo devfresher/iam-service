@@ -10,8 +10,8 @@ import {
   BeforeInsert,
   ManyToOne,
 } from 'typeorm';
-import { capitalizeWords } from 'src/common/utils/string.util';
-import { Gender } from 'src/modules/health/enums/gender.enum';
+import { capitalizeWords } from '../../../common/utils/string.util';
+import { Gender } from '../enums/gender.enum';
 import { Auth } from '../../auth/entities/auth.entity';
 
 @Entity()
@@ -44,7 +44,7 @@ export class Health {
   updatedAt!: Date;
 
   @DeleteDateColumn()
-  deletedAt!: Date;
+  deletedAt?: Date;
 
   @Column()
   authId!: string;

@@ -1,7 +1,7 @@
 import { AppDataSource } from '../data-source';
-import { Role } from 'src/common/enums/role.enum';
+import { Role } from '../../common/enums/role.enum';
 import * as bcrypt from 'bcryptjs';
-import { Auth } from 'src/modules/auth/entities/auth.entity';
+import { Auth } from '../../modules/auth/entities/auth.entity';
 import * as dotenv from 'dotenv';
 
 dotenv.config();

@@ -1,5 +1,5 @@
-import { Auth } from 'src/modules/auth/entities/auth.entity';
-import { Health } from 'src/modules/health/entities/health.entity';
+import { Auth } from '../modules/auth/entities/auth.entity';
+import { Health } from '../modules/health/entities/health.entity';
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 

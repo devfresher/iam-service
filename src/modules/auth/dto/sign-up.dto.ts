@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { Match } from 'src/common/decorators/match.decorator';
-import { IsCustomStrongPassword } from 'src/common/decorators/strong-password.decorator';
+import { Match } from '../../../common/decorators/match.decorator';
+import { IsCustomStrongPassword } from '../../../common/decorators/strong-password.decorator';
 
 export class SignupDto {  
   @IsNotEmpty()

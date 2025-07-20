@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Health } from '../../health/entities/health.entity';
-import { Role } from 'src/common/enums/role.enum';
+import { Role } from '../../../common/enums/role.enum';
 
 @Entity()
 export class Auth {
@@ -43,5 +43,5 @@ export class Auth {
   updatedAt!: Date;
 
   @DeleteDateColumn()
-  deletedAt!: Date;
+  deletedAt?: Date;
 }

@@ -5,17 +5,17 @@ import { Auth } from './entities/auth.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigType } from '@nestjs/config';
-import jwtConfig from 'src/common/config/jwt.config';
+import jwtConfig from '../../common/config/jwt.config';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtAuthGuard } from './guards/jwt.guard';
 import { PassportModule } from '@nestjs/passport';
-import jwtRefreshConfig from 'src/common/config/jwt-refresh.config';
+import jwtRefreshConfig from '../../common/config/jwt-refresh.config';
 import { RefreshJwtAuthGuard } from './guards/refresh-jwt.guard';
 import { RefreshJwtStrategy } from './strategies/refresh-jwt.strategy';
 import { ProfileController } from './profile.controller';
-import { Health } from 'src/modules/health/entities/health.entity';
+import { Health } from '../../modules/health/entities/health.entity';
 
 @Module({
   imports: [

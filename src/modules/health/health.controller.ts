@@ -11,14 +11,14 @@ import {
   Query,
 } from '@nestjs/common';
 import { HealthService } from './health.service';
-import { ResponseMessage } from 'src/common/decorators/response-message.decorator';
-import { SortOrder } from 'src/common/interfaces/find-all-option.interface';
-import { Role } from 'src/common/enums/role.enum';
-import { Roles } from 'src/common/decorators/roles.decorator';
-import { UpdateHealthDto } from './dto/update-health.dto.js';
-import { CreateHealthDto } from './dto/create-health.dto.js';
-import { AuthenticatedUser } from 'src/common/decorators/authenticated-user.decorator';
-import { ActiveUser } from 'src/modules/auth/types/active-user';
+import { ResponseMessage } from '../../common/decorators/response-message.decorator';
+import { SortOrder } from '../../common/interfaces/find-all-option.interface';
+import { Role } from '../../common/enums/role.enum';
+import { Roles } from '../../common/decorators/roles.decorator';
+import { UpdateHealthDto } from './dto/update-health.dto';
+import { CreateHealthDto } from './dto/create-health.dto';
+import { AuthenticatedUser } from '../../common/decorators/authenticated-user.decorator';
+import { ActiveUser } from '../../modules/auth/types/active-user';
 
 @Controller('/health')
 export class HealthController {
