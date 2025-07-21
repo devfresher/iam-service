@@ -2,7 +2,7 @@ import { Auth } from '../modules/auth/entities/auth.entity';
 import { Health } from '../modules/health/entities/health.entity';
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
-
+import { Appointment } from '../modules/appointment/entities/appointment.entity';
 
 dotenv.config();
 
@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   migrationsRun: false,
   logging: true,
-  entities: [Auth, Health],
+  entities: [Auth, Health, Appointment],
   migrations: ['src/database/migrations/*.ts'],
   subscribers: [],
 });

@@ -16,6 +16,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt.guard';
 import { RolesGuard } from './modules/auth/guards/roles.guard';
 import { AuthModule } from './modules/auth/auth.module';
 import { HealthModule } from './modules/health/health.module';
+import { AppointmentModule } from './modules/appointment/appointment.module';
 
 @Module({
   imports: [
@@ -30,17 +31,6 @@ import { HealthModule } from './modules/health/health.module';
         appConfiguration: ConfigType<typeof appConfig>,
         dbConfiguration: ConfigType<typeof dbConfig>,
       ) => {
-        const isTestEnv = appConfiguration.nodeEnv === 'test';
-
-        if (isTestEnv) {
-          return {
-            type: 'sqlite',
-            database: ':memory:',
-            autoLoadEntities: true,
-            synchronize: true,
-          } as TypeOrmModuleOptions;
-        }
-
         return {
           type: 'postgres',
           url: dbConfiguration.dbUrl,
@@ -71,6 +61,7 @@ import { HealthModule } from './modules/health/health.module';
     }),
     AuthModule,
     HealthModule,
+    AppointmentModule,
   ],
   controllers: [AppController],
   providers: [

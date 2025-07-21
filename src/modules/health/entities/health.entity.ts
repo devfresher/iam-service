@@ -9,10 +9,12 @@ import {
   BeforeUpdate,
   BeforeInsert,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import { capitalizeWords } from '../../../common/utils/string.util';
 import { Gender } from '../../../common/enums/gender.enum';
 import { Auth } from '../../auth/entities/auth.entity';
+import { Appointment } from 'src/modules/appointment/entities/appointment.entity';
 
 @Entity()
 export class Health {
@@ -49,9 +51,13 @@ export class Health {
   @Column()
   authId!: string;
 
-  @ManyToOne(() => Auth, (auth) => auth.healthRecords)
-  @JoinColumn({ name: 'authId' })
+  @ManyToOne(() => Auth, (auth) => auth.healthRecords, {
+    onDelete: 'CASCADE',
+  })
   auth!: Auth;
+
+  @OneToMany(() => Appointment, (appointment) => appointment.health)
+  appointments: Appointment[];
 
   @BeforeInsert()
   @BeforeUpdate()

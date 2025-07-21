@@ -5,9 +5,10 @@ import { Health } from './entities/health.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from '../../modules/auth/auth.module';
 import { Auth } from '../../modules/auth/entities/auth.entity';
+import { Appointment } from '../appointment/entities/appointment.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Health, Auth]), AuthModule],
+  imports: [TypeOrmModule.forFeature([Health, Auth, Appointment]), AuthModule],
   controllers: [HealthController],
   providers: [HealthService],
   exports: [HealthService],
